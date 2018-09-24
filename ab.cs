@@ -158,9 +158,12 @@ namespace HtLs2
 		{
 			if (a <= b)
 			{
+				sum = sum + a;
+				Task7(a + 1, b);
+			}
+			else
+			{
 				Console.WriteLine(sum);
-				sum = sum+ a;
-				Task7(a+1,b);
 			}
 		}
 		
