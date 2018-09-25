@@ -8,18 +8,17 @@ namespace HtLs2
 {
 	class Program
 	{
-		
+
 
 		static void Main(string[] args)
 		{
-			Task1();
-			Task2();
 			Task3();
 			Task4();
 			Task5();
+			Task62();
 			Task6();
-			Task7(1,7);
-
+			Task7(1, 7);
+			
 			Console.ReadLine();
 		}
 
@@ -49,7 +48,7 @@ namespace HtLs2
 			Console.WriteLine("Введите число.");
 			string a = Console.ReadLine();
 
-			if ( a.Length % 10 == 1 && a.Length % 100 != 11 )
+			if (a.Length % 10 == 1 && a.Length % 100 != 11)
 			{
 				Console.WriteLine("Это число состоит из " + a.Length + (" знака."));
 			}
@@ -131,20 +130,47 @@ namespace HtLs2
 			DateTime start = DateTime.Now;
 			int GoodNumbers = 0;
 
-			for (int i = 1; i <= 1000000000; i++)
+			for (int i = 1; i <= 100000000; i++)
 			{
 				int sumi = 0;
 				string stri = i.ToString();
 				foreach (char cnumber in stri)
 				{
 					int number = Convert.ToInt32(Convert.ToString(cnumber));
-					sumi = sumi + number; 
+					sumi = sumi + number;
 				}
 				if (i % sumi == 0)
 				{
-					Console.WriteLine(i);
+					
 					GoodNumbers++;
 				}
+			}
+			Console.WriteLine("Таких чисел " + GoodNumbers);
+
+			DateTime end = DateTime.Now;
+			Console.WriteLine(end - start);
+		}
+
+		private static void Task62 ()
+		{
+			DateTime start = DateTime.Now;
+			int GoodNumbers = 0;
+
+			for (int i = 1; i <= 1000000000; i++)
+			{
+				int sumnumb = 0;
+				int number = i;
+
+				while (number != 0)
+				{
+					sumnumb += number % 10;
+					number /= 10;
+					
+				}
+				if (i % sumnumb == 0)
+					{
+						GoodNumbers++;
+					}
 			}
 			Console.WriteLine("Таких чисел " + GoodNumbers);
 
