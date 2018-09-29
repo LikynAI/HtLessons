@@ -54,7 +54,7 @@ namespace HtLs3
 			Fraction solution = new Fraction(chis, znam);
 			return Reduce(solution);
 		}
-		
+
 		/// <summary>
 		/// вычитает из вервой дроби вторую
 		/// </summary>
@@ -81,7 +81,7 @@ namespace HtLs3
 			Fraction solution = new Fraction(chis, znam);
 			return Reduce(solution);
 		}
-		
+
 		/// <summary>
 		/// перемножает две дроби
 		/// </summary>
@@ -105,7 +105,7 @@ namespace HtLs3
 			Fraction solution = new Fraction(chis, znam);
 			return Reduce(solution);
 		}
-		
+
 		/// <summary>
 		/// делит первую дробь на вторую
 		/// </summary>
@@ -130,7 +130,7 @@ namespace HtLs3
 			Reduce(solution);
 			return Reduce(solution);
 		}
-		
+
 		/// <summary>
 		/// Находит НОД для дроби. 
 		/// </summary>
@@ -139,7 +139,7 @@ namespace HtLs3
 		/// <returns></returns>
 		public static int CommonDenominator(int _chis, int _znam)
 		{
-			int chis = _chis; 
+			int chis = _chis;
 			int znam = _znam;
 			while (znam != 0 && chis != 0)
 			{
@@ -168,7 +168,7 @@ namespace HtLs3
 			{
 				fraction1.chis = -fraction1.chis % fraction1.znam;
 			}
-			else if(fraction1.cel > 0)
+			else if (fraction1.cel > 0)
 			{
 				fraction1.chis = fraction1.chis % fraction1.znam;
 			}
@@ -244,12 +244,12 @@ namespace HtLs3
 		/// выводит значение дроби 
 		/// </summary>
 		public static void Print(Fraction fraction1)
-			{
-				Console.WriteLine($" {fraction1.cel} {fraction1.chis}/{fraction1.znam} ");
-			}
+		{
+			Console.WriteLine($" {fraction1.cel} {fraction1.chis}/{fraction1.znam} ");
+		}
 
 		/// <summary>
-		/// для целых чисел
+		/// конструктор для целых чисел
 		/// </summary>
 		/// <param name="_cel"></param>
 		public Fraction(int _cel)
@@ -259,6 +259,11 @@ namespace HtLs3
 			znam = 1;
 		}
 
+
+		/// <summary>
+		/// конструктор принимающий в качестве аргумента дробь
+		/// </summary>
+		/// <param name="_cel"></param>
 		public Fraction(Fraction fraction1)
 		{
 			int _cel = fraction1.cel;
@@ -285,7 +290,7 @@ namespace HtLs3
 		{
 			if (_cel < 0)
 			{
-			_chis =-_chis ;
+				_chis = -_chis;
 
 			}
 
@@ -305,6 +310,15 @@ namespace HtLs3
 			znam = _znam;
 		}
 
+		/// <summary>
+		/// метод конвертирует дробь в decimal
+		/// </summary>
+		/// <param name="fraction1"></param>
+		/// <returns></returns>
+		public static decimal ToDecimal (Fraction fraction1)
+		{
+			return fraction1.chis / fraction1.znam + fraction1.chis;
+		}
 		/// <summary>
 		/// Проверяет число на четность.
 		/// </summary>
