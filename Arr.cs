@@ -33,13 +33,28 @@ namespace HtLs4
 		/// <param name="path"></param>
 		public Arr(string path)
 		{
-			string text = File.ReadAllText(path);
-			string[] subints = text.Split();
-			arr = new int[subints.Length-1];
+			bool flag = true;
 
-			for (int i = 0; i < subints.Length-1; i++)
+			while (flag)
 			{
-				arr[i] = Convert.ToInt32(subints[i]);				
+				try
+				{
+					flag = false;
+
+					string text = File.ReadAllText(path);
+					string[] subints = text.Split();
+					arr = new int[subints.Length - 1];
+
+					for (int i = 0; i < subints.Length - 1; i++)
+					{
+						arr[i] = Convert.ToInt32(subints[i]);
+					}
+				}
+				catch
+				{
+					flag = true;
+					Console.WriteLine("Неверно указан  путь к файлу!");
+				}
 			}
 		}
 

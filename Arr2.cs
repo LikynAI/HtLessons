@@ -19,12 +19,12 @@ namespace HtLs4
 		public Arr2(int size, int size2)
 		{
 			Random rnd = new Random();
-			arr = new int[size,size2];
+			arr = new int[size, size2];
 			for (int i = 0; i < arr.GetLength(0); i++)
 			{
 				for (int j = 0; j < arr.GetLength(1); j++)
 				{
-					arr[i,j] = rnd.Next(-10,10);
+					arr[i, j] = rnd.Next(-10, 10);
 				}
 			}
 		}
@@ -35,20 +35,37 @@ namespace HtLs4
 		/// <param name="path"></param>
 		public Arr2(string path)
 		{
-			string text = File.ReadAllText(path);
-			string[] subints = text.Split(';');
-			arr = new int[subints.Length-1, subints[0].Split(',').Length-1];
+			bool flag = true;
 
-			for (int i = 0; i < subints.Length-1; i++)
+			while (flag)
 			{
-				string[] a = subints[i].Split(',');
-
-				for (int j = 0; j < a.Length - 1; j++)
+				try
 				{
-					arr[i,j] = Convert.ToInt32(a[j]);
+					flag = false;
+
+					string text = File.ReadAllText(path);
+					string[] subints = text.Split(';');
+
+					arr = new int[subints.Length - 1, subints[0].Split(',').Length - 1];
+
+					for (int i = 0; i < subints.Length - 1; i++)
+					{
+						string[] a = subints[i].Split(',');
+
+						for (int j = 0; j < a.Length - 1; j++)
+						{
+							arr[i, j] = Convert.ToInt32(a[j]);
+						}
+					}
+				}
+				catch
+				{
+					flag = true;
+					Console.WriteLine("Неверно указан  путь к файлу!");
 				}
 			}
 		}
+
 
 		/// <summary>
 		/// возвращает сумму всех элементов массива
@@ -62,7 +79,7 @@ namespace HtLs4
 			{
 				for (int j = 0; j < arr.GetLength(1); j++)
 				{
-					sum += arr[i, j]; 
+					sum += arr[i, j];
 				}
 			}
 			return sum;
@@ -81,7 +98,7 @@ namespace HtLs4
 			{
 				for (int j = 0; j < arr.GetLength(1); j++)
 				{
-					if (arr[i, j] > a) { sum += arr[i, j]; }					
+					if (arr[i, j] > a) { sum += arr[i, j]; }
 				}
 			}
 			return sum;
@@ -93,7 +110,7 @@ namespace HtLs4
 		/// <returns></returns>
 		public int MinOf()
 		{
-			int min = arr[1,1];
+			int min = arr[1, 1];
 			for (int i = 0; i < arr.GetLength(0); i++)
 			{
 				for (int j = 0; j < arr.GetLength(1); j++)
@@ -145,7 +162,7 @@ namespace HtLs4
 					}
 				}
 			}
-			
+
 		}
 
 		/// <summary>
@@ -155,17 +172,19 @@ namespace HtLs4
 		/// <param name="path"></param>
 		public static void CreatFile(int[,] arr, string path)
 		{
+
 			string text = "";
-			
+
 			for (int i = 0; i < arr.GetLength(0); i++)
 			{
 				for (int j = 0; j < arr.GetLength(1); j++)
 				{
-					text += arr[i,j] + ",";
+					text += arr[i, j] + ",";
 				}
 				text += ";";
 			}
 			File.WriteAllText(path, text);
+
 		}
 	}
 }
