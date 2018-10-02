@@ -8,7 +8,7 @@ namespace HtLs4
 {
 	class Task1
 	{
-		private static void Task()
+		public static void Task()
 		{
 			Random random = new Random();
 			int[] vs = new int[20];
@@ -35,6 +35,18 @@ namespace HtLs4
 			}
 
 			Console.ReadLine();
+		}
+		public static void couples(int[] vs)
+		{
+			int Result = 0;
+
+			for (int i = 0; i < vs.Length - 1; i++)
+			{
+				if (vs[i] % 3 == 0 || vs[i + 1] % 3 == 0)
+				{
+					Result++;
+				}
+			}
 		}
 	}
 }

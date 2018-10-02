@@ -9,14 +9,15 @@ namespace HtLs4
 {
 	class Task3
 	{
+		
+
 		public static void Task()
 		{
-			string[] Base = LoadBase(Environment.GetFolderPath
-				(Environment.SpecialFolder.MyDocuments) + "\\log.txt");
-
+			
 			int i = 0;
 			while (i < 3)
 			{
+				string[] Base = LoadBase(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\log.txt");
 				Console.Clear();
 
 				Console.Write("Логин: ");

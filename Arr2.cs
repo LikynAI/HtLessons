@@ -11,6 +11,11 @@ namespace HtLs4
 	{
 		public int[,] arr;
 
+		/// <summary>
+		/// создает двумерный массив указонног размера
+		/// </summary>
+		/// <param name="size"></param>
+		/// <param name="size2"></param>
 		public Arr2(int size, int size2)
 		{
 			Random rnd = new Random();
@@ -24,6 +29,10 @@ namespace HtLs4
 			}
 		}
 
+		/// <summary>
+		/// создает массив и заполняет его данными из файла
+		/// </summary>
+		/// <param name="path"></param>
 		public Arr2(string path)
 		{
 			string text = File.ReadAllText(path);
@@ -41,6 +50,10 @@ namespace HtLs4
 			}
 		}
 
+		/// <summary>
+		/// возвращает сумму всех элементов массива
+		/// </summary>
+		/// <returns></returns>
 		public int Sum()
 		{
 			int sum = 0;
@@ -55,6 +68,11 @@ namespace HtLs4
 			return sum;
 		}
 
+		/// <summary>
+		/// возвращает сумму всех элементов больше заданного
+		/// </summary>
+		/// <param name="a"></param>
+		/// <returns></returns>
 		public int SumMoreThan(int a)
 		{
 			int sum = 0;
@@ -69,6 +87,10 @@ namespace HtLs4
 			return sum;
 		}
 
+		/// <summary>
+		/// Возвращает минимальный элемент массива
+		/// </summary>
+		/// <returns></returns>
 		public int MinOf()
 		{
 			int min = arr[1,1];
@@ -82,6 +104,10 @@ namespace HtLs4
 			return min;
 		}
 
+		/// <summary>
+		/// Возвращает максимальный элемент массива
+		/// </summary>
+		/// <returns></returns>
 		public int MaxOf()
 		{
 			int max = arr[1, 1];
@@ -95,10 +121,16 @@ namespace HtLs4
 			return max;
 		}
 
-		public void IndexOf(int a, out int rang, out int count)
+		/// <summary>
+		/// с помощью ссылок возвращает индекс первого попавшегося элемента. 
+		/// </summary>
+		/// <param name="a"></param>
+		/// <param name="rang"></param>
+		/// <param name="count"></param>
+		public void IndexOf(int a, out int column, out int line)
 		{
-			rang = -1;
-			count = -1;
+			column = -1;
+			line = -1;
 
 			for (int i = 0; i < arr.GetLength(0); i++)
 			{
@@ -106,8 +138,8 @@ namespace HtLs4
 				{
 					if (arr[i, j] == a)
 					{
-						rang = i;
-						count = j;
+						column = i;
+						line = j;
 						i = arr.GetLength(0);
 						break;
 					}
@@ -116,6 +148,11 @@ namespace HtLs4
 			
 		}
 
+		/// <summary>
+		/// записывает массив и сохраняет его в виде текстового файла
+		/// </summary>
+		/// <param name="arr"></param>
+		/// <param name="path"></param>
 		public static void CreatFile(int[,] arr, string path)
 		{
 			string text = "";
