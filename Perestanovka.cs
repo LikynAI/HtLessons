@@ -8,6 +8,12 @@ namespace ConsoleApp7
 {
 	class Perestanovka
 	{
+		/// <summary>
+		/// первый вариант проверки не я вляется ли 
+		/// </summary>
+		/// <param name="a"></param> а
+		/// <param name="b"></param> перестановкой б
+		/// <returns></returns>
 		public static bool Comparing1(string a, string b)
 		{
 			if (a.Length != b.Length) { return false; }
@@ -39,16 +45,22 @@ namespace ConsoleApp7
 			return word;
 		}
 
-		public static bool Comparing2 (string word1, string word2)
+		/// <summary>
+		/// второй вариант проверки не я вляется ли 
+		/// </summary>
+		/// <param name="a"></param> а
+		/// <param name="b"></param> перевстановкой б
+		/// <returns></returns>
+		public static bool Comparing2 (string a, string b)
 		{
-			if (word1.Length != word2.Length)
+			if (a.Length != b.Length)
 			{
 				return false;
 			}
-			char[] chars1 = SortString(word1);
-		char[] chars2 = SortString(word2);
+			char[] chars1 = SortString(a);
+		char[] chars2 = SortString(b);
 
-			for (int i = 0; i<word1.Length; i++)
+			for (int i = 0; i<a.Length; i++)
 			{
 				if (chars1[i] != chars2[i])
 				{

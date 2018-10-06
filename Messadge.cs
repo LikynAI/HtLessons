@@ -12,6 +12,11 @@ namespace ConsoleApp7
 		StreamReader sr { get; set; }
 		public string[] words { get; set; }
 
+		/// <summary>
+		/// Конструктор класса Messadge 
+		/// принимающий в качестве аргумента путь к текстовому файлу
+		/// </summary>
+		/// <param name="path"></param>
 		public Messadge(string path)
 		{
 			sr = new StreamReader(path);
@@ -19,53 +24,75 @@ namespace ConsoleApp7
 			words = text.Split();
 		}
 
-		public static void deletchar(string[] words, char letter)
+		/// <summary>
+		/// Удаляет слова
+		/// </summary>
+		/// <param name="m"></param> из класса меседж
+		/// <param name="letter"></param>  заканчивающиеся на букву
+		public static void deletchar(Messadge m, char letter)
 		{
-			for (int i = 0; i < words.Length; i++)
+			for (int i = 0; i < m.words.Length; i++)
 			{
-				if (words[i][words[i].Length - 1] == letter)
+				if (m.words[i][m.words[i].Length - 1] == letter)
 				{
-					words[i] = string.Empty; 
+					m.words[i] = string.Empty; 
 				}
 			}
 		}
 
-		public static void WriteLessThan(string[] words, int n)
+		/// <summary>
+		/// Выводит на консоль слова 
+		/// </summary>
+		/// <param name="m"></param>
+		/// <param name="n"></param> чья длина меньше n
+		public static void WriteLessThan(Messadge m, int n)
 		{
-			for (int i = 0; i < words.Length; i++)
+			for (int i = 0; i < m.words.Length; i++)
 			{
-				if (words[i].Length < n)
+				if (m.words[i].Length < n)
 				{
-					Console.Write(words[i] + " ");
+					Console.Write(m.words[i] + " ");
 				}
 			}
 		}
 
-		public static int LongestWord(string[] words)
+		/// <summary>
+		/// Находит самое длиное слово, возвращает его размер и выводит на консоль 
+		/// </summary>
+		/// <param name="m"></param>
+		/// <returns></returns>
+		public static int LongestWord(Messadge m)
 		{
 			string tempo = string.Empty;
 
-			for (int i = 0; i < words.Length; i++)
+			for (int i = 0; i < m.words.Length; i++)
 			{
-				if (words[i].Length > tempo.Length) { tempo = words[i]; }
+				if (m.words[i].Length > tempo.Length) { tempo = m.words[i]; }
 			}
 			return tempo.Length;
 		}
 
-
-		public static StringBuilder LongWordsSentence(string[] words)
+		/// <summary>
+		/// Составляет предложение из самых длиных слов
+		/// </summary>
+		/// <param name="m"></param>
+		/// <returns></returns>
+		public static StringBuilder LongWordsSentence(Messadge m)
 		{
 			StringBuilder lws = new StringBuilder();
 
-			int lenght = LongestWord(words);
-			for (int i = 0; i < words.Length; i++)
+			int lenght = LongestWord(m);
+			for (int i = 0; i < m.words.Length; i++)
 			{
-				if (words[i].Length == lenght) { lws.Append(words[i] + " "); }
+				if (m.words[i].Length == lenght) { lws.Append(m.words[i] + " "); }
 			}
 			Console.WriteLine(lws.ToString());
 			return lws;
 		}
 
+		/// <summary>
+		/// выводит на консоль данные из класса Messadge
+		/// </summary>
 		public void print()
 		{
 			for (int i = 0; i < words.Length; i++)
